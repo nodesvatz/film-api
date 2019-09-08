@@ -3,7 +3,7 @@ import request from 'supertest';
 import { ObjectId } from 'mongodb';
 import app from '../../src/app';
 import dropDatabase from '../config/drop_db';
-import { createFilm, getFilm } from '../test_helpers.js.js';
+import { createFilm, getFilm } from '../test_helpers.js';
 
 describe('Film API', () => {
   dropDatabase();
