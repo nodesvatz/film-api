@@ -1,0 +1,5 @@
+--require @babel/register
+--recursive
+--timeout 100000
+--exit
+test/**/*.js

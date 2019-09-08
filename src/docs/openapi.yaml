@@ -1,0 +1,52 @@
+openapi: "3.0.1"
+info:
+  title: "Film API"
+  version: "0.0.7"
+servers:
+- url: "http://localhost:5000/{basePath}"
+  variables:
+    basePath:
+      default: "v1/film"
+paths:
+  /add:
+    post:
+      tags:
+        - "Film API"
+      description: "Use this method to add film"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/addFilmBody"
+      responses:
+        400:
+          description: "Method will return error object with explanation message included"
+        200:
+          description: "Method will return film on success"        
+                             
+components:
+  schemas:
+    addFilmBody:
+      required:
+        - title
+        - release
+        - format
+        - stars
+      title: New Film
+      type: object
+      properties:
+        title:
+          type: string
+        release:
+          type: string
+        format:
+          enum:
+            - VHS
+            - DVD
+            - Blu-Ray
+        stars:
+          type: array
+          items:
+            type: string
+
+    
