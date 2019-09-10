@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "d1a0d5df-d730-418c-853e-775d7cef7183",
+		"name": "film-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Requests",
+			"item": [
+				{
+					"name": "Get All(ascending)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/v1/film",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"film"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All(descending)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/v1/film?sortBy=-1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"film"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "-1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all(with filters - stars)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/v1/film?stars[]=Barry Corbin&stars[]=John Doe",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"film"
+							],
+							"query": [
+								{
+									"key": "stars[]",
+									"value": "Barry Corbin"
+								},
+								{
+									"key": "stars[]",
+									"value": "John Doe"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all(with filter by name)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/v1/film?name=test film",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"v1",
+								"film"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "test film"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "add film",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Titlet\",\n\t\"release\": 1974,\n\t\"format\": \"VHS\",\n\t\"stars\": [\"Msel Brookss\", \"Clesdvon Listtle\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/v1/film/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"film",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/v1/film/nameOfFilm",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"film",
+						"nameOfFilm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"type": "file",
+							"src": "/Users/sergey/Downloads/sample_movies.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/v1/film/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v1",
+						"film",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -27,6 +27,10 @@ For test:
 ```
 It will launch the application at `http://localhost:5000` and you are now ready to navigate the core functions of your practice through the app. 
 
+## Testing
+
+You can import film-api.postman_collection.json to POSTMAN and use prepared requests
+
 ## mongoDB
 For the app to render locally you will need mongoDB installed on your computer. Depending on your operating system, the installation proccess will be different. You can find more information on installing mongoDB per specific operating systems cited in the official documentation.
 ```
