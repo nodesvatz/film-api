@@ -6,7 +6,7 @@ export const createFilm = async (title = 'Test', stars = ['John Doe']) => {
   try {
     const db = await connect();
     const model = new FilmModel(db);
-    await FilmService.addFilm(
+    return await FilmService.addFilm(
       {
         title,
         release: '1970',

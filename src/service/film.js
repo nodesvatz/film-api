@@ -19,9 +19,9 @@ class FilmService {
     }
   }
 
-  async deleteFilm(title, model) {
+  async deleteFilm(id, model) {
     try {
-      const result = await model.deleteOne(title);
+      const result = await model.deleteOne(id);
 
       return result;
     } catch (err) {

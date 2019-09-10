@@ -157,10 +157,10 @@ describe('Film API', () => {
   describe('Delete film', () => {
     
     it('Should delete film', async () => {
-      await createFilm('a');
+      const { data } = await createFilm('a');
 
       const { body } = await request(app)
-        .delete('/v1/film/a')
+        .delete(`/v1/film/${data._id}`)
         .expect('Content-Type', /json/)
         .expect(200)
         .catch(err => {
@@ -177,7 +177,7 @@ describe('Film API', () => {
 
     it('Should be valid response, when item does not exist', async () => {
       const { body } = await request(app)
-        .delete('/v1/film/a')
+        .delete('/v1/film/507f1f77bcf86cd799439011')
         .expect('Content-Type', /json/)
         .expect(200)
         .catch(err => {

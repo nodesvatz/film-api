@@ -16,9 +16,9 @@ router.post('/add', oapi.validate('post', '/add'), async (req, res, next) => {
   }
 });
 
-router.delete('/:film', async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   try {
-    const result = await FilmService.deleteFilm(req.params.film.toLowerCase(), req.app.get('filmModel'));
+    const result = await FilmService.deleteFilm(req.params.id, req.app.get('filmModel'));
 
     const responseMessage = result.deletedCount === 1 ? 
       { message: 'Film successfully deleted', status: true } : 

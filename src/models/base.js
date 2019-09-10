@@ -1,3 +1,5 @@
+import { ObjectId } from 'mongodb';
+
 class BaseModel {
 
   async insertOne(data) {
@@ -8,9 +10,9 @@ class BaseModel {
     }
   }
 
-  async deleteOne(title) {
+  async deleteOne(id) {
     try {
-      return this.model.deleteOne({ title });
+      return this.model.deleteOne({ _id: ObjectId(id) });
     } catch(err) {
       throw err;
     }
