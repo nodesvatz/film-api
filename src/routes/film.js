@@ -45,12 +45,18 @@ router.post('/upload', async (req, res, next) => {
   try {
     const file = fs.createWriteStream(process.env.FILE_TXT);
 
+    console.log(file)
+
     req.pipe(file);
 
     req.on('end', async () => {
-      const result = await FilmService.saveList(req.app.get('filmModel'));
+      try {
+        const result = await FilmService.saveList(req.app.get('filmModel'));
 
-      res.json(result.  ops.length > 1 ? { message: 'File successfully uploaded', data: result.ops, status: true } : { message: 'something went wrong, try again', status: false } );
+        res.json(result.ops.length > 1 ? { message: 'File successfully uploaded', data: result.ops, status: true } : { message: 'something went wrong, try again', status: false } );
+      } catch(err) {
+        next(err);
+      }
     });
   } catch(err) {
     next(err);

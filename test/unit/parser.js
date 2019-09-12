@@ -22,7 +22,7 @@ describe('Parser', () => {
     try {
       await parser();
     } catch (err) {
-      assert.deepEqual(err, 'File have not passed', 'should be error');
+      assert.deepEqual(err.message, 'File have not passed', 'should be error');
     }
   });
 });

@@ -3,7 +3,7 @@ import fs from 'fs';
 export const parser = (filename) => {
   try {
     return new Promise((resolve, reject) => {
-      if (!filename) return reject('File have not passed');
+      if (!filename) return reject(new Error('File have not passed'));
       fs.readFile(`${process.cwd()}/${filename}`, 'utf8', (err, data) => {
         if (err) reject(err);
         const escape = '\n';
@@ -36,6 +36,8 @@ export const parser = (filename) => {
           }
   
         } while(nextTick);
+
+        if (preparedData.length === 0) return reject(new Error('Not valid file format'));
   
         resolve(preparedData);
       });

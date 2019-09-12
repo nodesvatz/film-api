@@ -4,7 +4,7 @@ class FilmService {
 
   async addFilm(data, model) {
     try {
-      data.title = data.title.toLowerCase();
+      // data.title = data.title.toLowerCase();
 
 
       const film = await model.getByField({ title: data.title });

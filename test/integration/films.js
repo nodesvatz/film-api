@@ -31,7 +31,7 @@ describe('Film API', () => {
       const requiredFormatFields = ['VHS', 'DVD', 'Blu-Ray'];
 
 
-      assert.deepEqual(title, 'test', 'title should be lower case');
+      assert(typeof title === 'string', 'title should be string');
       assert(typeof release === 'string', 'release should be string');
       assert(requiredFormatFields.includes(format), 'format should be equal allowed values');
       assert(ObjectId.isValid(_id), 'should be generated _id as ObjectId');
@@ -97,7 +97,7 @@ describe('Film API', () => {
 
 
       assert(body.length === 3, 'should return array of films');
-      assert(body[0].title === 'a' && body[1].title === 'b' && body[2].title === 'c', 'should return objects sorted ascending by default');
+      assert(body[0].title === 'A' && body[1].title === 'B' && body[2].title === 'C', 'should return objects sorted ascending by default');
     });
 
     it('Should be valid response with status 200, when make requrest with descending sort', async () => {
@@ -115,7 +115,7 @@ describe('Film API', () => {
 
 
       assert(body.length === 3, 'should return array of films');
-      assert(body[0].title === 'c' && body[1].title === 'b' && body[2].title === 'a', 'should return objects sorted descending by default');
+      assert(body[0].title === 'C' && body[1].title === 'B' && body[2].title === 'A', 'should return objects sorted descending by default');
     });
 
     it('Should be valid response with status 200, when make request with filters(title)', async () => {
@@ -124,7 +124,7 @@ describe('Film API', () => {
       await createFilm('B');
 
       const { body } = await request(app)
-        .get('/v1/film?name=a')
+        .get('/v1/film?name=A')
         .expect('Content-Type', /json/)
         .expect(200)
         .catch(err => {
@@ -132,7 +132,7 @@ describe('Film API', () => {
         });
 
       assert(body.length === 1, 'should return array of films');
-      assert(body[0].title === 'a', 'should return filtered array');
+      assert(body[0].title === 'A', 'should return filtered array');
     });
 
     it('Should be valid response with status 200, when make request with filters(stars)', async () => {
@@ -150,7 +150,7 @@ describe('Film API', () => {
 
 
       assert(body.length === 2, 'should return array of films');
-      assert(body[0].title === 'a' && body[1].title === 'b', 'should return films in which there are the desired actors');
+      assert(body[0].title === 'A' && body[1].title === 'B', 'should return films in which there are the desired actors');
     });
   });
 
